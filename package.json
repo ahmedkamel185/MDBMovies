@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest"
+    "test":"jest"
+
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.8.3",
@@ -14,13 +15,9 @@
     "@react-navigation/bottom-tabs": "^5.2.1",
     "@react-navigation/native": "^5.0.10",
     "@react-navigation/stack": "^5.2.0",
-    "@testing-library/jest-native": "^3.1.0",
     "axios": "^0.19.2",
-    "es6-promise": "^4.2.8",
     "expo": "~36.0.0",
     "flow-bin": "^0.121.0",
-    "isomorphic-fetch": "^2.2.1",
-    "jest-native": "^3.0.0",
     "mobx": "^5.15.4",
     "mobx-react": "^6.1.8",
     "mobx-state-tree": "^3.15.0",
@@ -34,7 +31,6 @@
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
     "react-redux": "^7.2.0",
-    "react-test-renderer": "^16.13.1",
     "redux": "^4.0.5",
     "yield": "0.0.6-8"
   },
@@ -42,9 +38,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-flow": "^7.9.0",
     "babel-preset-expo": "~8.0.0",
-    "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "jest": "^25.2.4",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2"
   },
@@ -58,5 +52,7 @@
       "enzymeAdapter": "react16"
     }
   },
+
+  
   "private": true
 }

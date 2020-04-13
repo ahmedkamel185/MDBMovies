@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
-import ArtistListRow from '../Components/ArtistListRow';
+import FavouriteListRow from '../Components/FavouriteListRow';
 import { observer, inject } from 'mobx-react';
 
-@inject('ArtistStore')
+@inject('FavouriteStore')
 @observer
 class Details extends Component {
   renderFooter = () => {
@@ -20,23 +20,23 @@ class Details extends Component {
     return (
       <View>
         <FlatList
-          data={ArtistStore.artistLists}
+          data={FavouriteStore.favouriteLists}
           keyExtractor={(item, index) => index.toString()}
           onEndReached={() => this.loadMore()}
           onEndReachedThreshold={200}
           ListFooterComponent={() =>
-            ArtistStore.isLoading == true ? null : (
-              <ActivityIndicator size='large' animating />
+            FavouriteStore.isLoading == true ? null : (
+              <ActivityIndicator size='large' animating={false} />
             )
           }
-          renderItem={({ item }) => <ArtistListRow playlist={item} />}
+          renderItem={({ item }) => <FavouriteListRow favouriteList={item} />}
         />
       </View>
     );
   }
 
   loadMore = () => {
-    ArtistStore.fetchData();
+    FavouriteStore.fetchData();
   };
 }
 

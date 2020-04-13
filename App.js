@@ -1,57 +1,41 @@
-import React, { Component } from 'react';
-import  { createStore } from 'redux';
-import Home from './App/Containers/Home';
-import Details from './App/Containers/Details';
-import initialState from './App/src/config';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import PlayStore from './App/Models/PlayList';
-import ArtistStore from './App/Models/ArtistList';
+import React, { Component } from "react";
+import Home from "./App/Containers/Home";
+import Details from "./App/Containers/Details";
+import initialState from "./App/src/config";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import MovieStore from "./App/Models/MovieList";
+import FavouriteStore from "./App/Models/FavouriteList";
 const Stack = createStackNavigator();
-import {Provider} from 'mobx-react';
+import { Provider } from "mobx-react";
 
+const movieStore = (window.MovieStore = MovieStore.create(initialState));
 
-const playStore = window.PlayStore = PlayStore.create(initialState)
-
-const artistStore = window.ArtistStore = ArtistStore.create(initialState)
-
+const favouriteStore = (window.FavouriteStore = FavouriteStore.create(initialState));
 
 const screens = {
-    Screen1: {
-      screen: Home
-    },
-    Screen2: {
-      screen: Details
-    }
+  Screen1: {
+    screen: Home
+  },
+  Screen2: {
+    screen: Details
   }
-  
-  const config = {
-    headerMode: 'none',
-    initialRouteName: 'Screen1'
-  }
+};
 
-  const Stack2 = createStackNavigator();
+const config = {
+  headerMode: "none",
+  initialRouteName: "Screen1"
+};
 
-  
-export default (stack) => 
+const Stack2 = createStackNavigator();
 
-<Provider PlayStore = {playStore.fetchData()} ArtistStore = {artistStore} >
-
-  
-<NavigationContainer>
- <Stack.Navigator initialRouteName="Home">
- 
- <Stack.Screen name="Home" component={Home} navigation={stack}/>
- <Stack.Screen name="Details" component={Details} />
-
- </Stack.Navigator>
- 
-</NavigationContainer>
-
-
-</Provider>
-
-
-
-
-
+export default stack => (
+  <Provider MovieStore={movieStore.fetchData()} FavouriteStore={favouriteStore.fetchData()}>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} navigation={stack} />
+        <Stack.Screen name="Details" component={Details} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  </Provider>
+);

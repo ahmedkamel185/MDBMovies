@@ -1,25 +1,24 @@
 import React from 'react';
-import { View, Text,StyleSheet } from 'react-native';
+import { View, Text,StyleSheet,Image } from 'react-native';
 
  export default function 
 
-  ArtistListRow({playlist}){
+  FavouriteListRow({favouriteList}){
 
    // This will return the ArtistList row component
 
    return (
     
     <View style={styles.container} >
-        
-      <View style={{ flex: 1 }} >
       
-        <Text style=
-        {styles.title}>{playlist.track.artists[0].name} </Text>
-        <Text style=
-        {styles.owner}>{playlist.track.artists[0].type} </Text>
-      
+      <Image source={{ uri: 'https://image.tmdb.org/t/p/w185/' + favouriteList.poster_path
+     }} style={styles.poster} />
+
+      <View style={{ flex: 1 }}>
+        <Text style={styles.title}>{favouriteList.title} </Text>
+        <Text style={styles.owner}>Release Date: {favouriteList.release_date}  Rate: {favouriteList.vote_average} </Text>
       </View>
-         
+   
     </View>
 
   );
@@ -33,9 +32,9 @@ import { View, Text,StyleSheet } from 'react-native';
     
     container:{
 
-      flexDirection:"row",
+      flexDirection:'row',
       padding:5,
-      alignItems:"center",
+      alignItems:'center',
       borderWidth:1.3,
       marginTop:15
 
@@ -44,7 +43,7 @@ import { View, Text,StyleSheet } from 'react-native';
     iconContainer:{
 
       flex:1,
-      alignItems:"center"
+      alignItems:'center'
       
         },
 
@@ -63,6 +62,12 @@ import { View, Text,StyleSheet } from 'react-native';
       flex:2,
       color:'gray',
       marginLeft:10,
-    }
-        
+    },
+    poster: {
+      height: 100,
+      width: 70,
+      resizeMode: 'contain'
+    },
+  
+  
   })
